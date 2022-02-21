@@ -2,13 +2,13 @@ const router = require('express').Router();
 const fs = require('fs');
 
 // this will get notes from the database
-router.get('/yourNotes', (req, res) => {
+router.get('/notes', (req, res) => {
     let yourNotes = fs.readFileSync('./db/db.json', 'utf8');
     res.json(JSON.parse(yourNotes));
 });
 
 // this will post a new note and will also add top the database
-router.post('/yourNotes', (req, res) => {
+router.post('/notes', (req, res) => {
     let yourNotes = fs.readFyleSync('./db/db.json', 'utf8');
     const yourNewNote = {
         ...req.body,
@@ -31,7 +31,7 @@ router.post('/yourNotes', (req, res) => {
 });
 
 // this will delete a user's note from the database
-router.delete('/yourNotes', (req, res) => {
+router.delete('/notes', (req, res) => {
     let yourNotes = fs.readFileSync('./db/db.json', 'utf8');
     const parseNotes = JSON.parse(yourNotes);
 
@@ -48,9 +48,5 @@ router.delete('/yourNotes', (req, res) => {
     });
     res.json(noteUpdates);
 });
-
-
-
-
 
 module.exports = router;
