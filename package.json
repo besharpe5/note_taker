@@ -4,8 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/besharpe5/note_taker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/besharpe5/note_taker/issues"
+  },
+  "homepage": "https://github.com/besharpe5/note_taker#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
