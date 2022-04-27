@@ -9,17 +9,17 @@ router.get('/notes', (req, res) => {
 
 // this will post a new note and will also add top the database
 router.post('/notes', (req, res) => {
-    let notes = fs.readFyleSync('./db/db.json', 'utf8');
+    let notes = fs.readFileSync('./db/db.json', 'utf8');
     const newNote = {
         ...req.body,
         // this will add an id, which will be needed when the user deletes a note
         id: notes.length.toString()
     };
     
-    const parseNotes = JSON.parse(notes);
-    parseNotes.push(newNote);
+    const parsedNotes = JSON.parse(notes);
+    parsedNotes.push(newNote);
 
-    fs.writeFile('./db/db.json', JSON.stringify(parseNotes, null, 2),
+    fs.writeFile('./db/db.json', JSON.stringify(parsedNotes, null, 2),
   (err, text) => {
     if (err) {
       console.error(err);
@@ -31,11 +31,11 @@ router.post('/notes', (req, res) => {
 });
 
 // this will delete a user's note from the database
-router.delete('/notes', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
     let notes = fs.readFileSync('./db/db.json', 'utf8');
-    const parseNotes = JSON.parse(notes);
+    const parsedNotes = JSON.parse(notes);
 
-    const noteUpdates = parseNotes.filter((note) => {
+    const noteUpdates = parsedNotes.filter((note) => {
         return note.id !== req.params.id;
     });
 
